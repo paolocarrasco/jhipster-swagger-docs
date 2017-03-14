@@ -1,0 +1,4 @@
+jhipster:
+    swagger:
+        contactName: com.avantica.ceremony
+        contactEmail: com.avantica.ceremony@example.org

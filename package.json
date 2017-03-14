@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "generator-jhipster-swagger2markup": "1.1.0",
+    "generator-jhipster": "4.0.7"
+  }
+}
