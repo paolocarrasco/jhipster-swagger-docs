@@ -4,9 +4,7 @@ import com.avantica.ceremony.EntelApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -23,9 +21,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = EntelApp.class)
 @WebAppConfiguration
-@IntegrationTest
+@SpringBootTest(classes = EntelApp.class)
 @ActiveProfiles("dev,s2m")
 public class Swagger2MarkupIntTest {
 
@@ -38,7 +35,7 @@ public class Swagger2MarkupIntTest {
     @Before
     public void setup() throws IOException {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-        .build();
+            .build();
     }
 
 
@@ -47,7 +44,7 @@ public class Swagger2MarkupIntTest {
         this.mockMvc.perform(get("/v2/api-docs")
             .accept(MediaType.APPLICATION_JSON))
             .andDo(SwaggerResultHandler.outputDirectory("target/swagger")
-            .build())
+                .build())
             .andExpect(status().isOk());
     }
 }
